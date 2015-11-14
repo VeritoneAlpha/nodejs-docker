@@ -1,4 +1,4 @@
-FROM docker-registry.life.atigeo.com:5000/atigeobase
+FROM xpatterns/base:1.0.2d
 
 ENV NPM_VERSION v2.10.1
 
