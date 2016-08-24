@@ -45,7 +45,7 @@ RUN gem update && \
 RUN npm install -g grunt-cli && \
 	npm install -g bower && \
 	npm install -g nodemon && \
-    npm install -g jspm
+	npm install -g jspm
 
 # Test config
 RUN npm install -g node-gyp
