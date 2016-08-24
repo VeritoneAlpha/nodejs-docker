@@ -1,6 +1,6 @@
 FROM xpatterns/base:1.0.2d
 
-ENV NODE_VERSION v6.4.0
+ENV NODE_VERSION v6.3.1
 ENV NODE_DOWNLOAD_LINK http://nodejs.org/dist/$NODE_VERSION/node-$NODE_VERSION-linux-x64.tar.gz
 
 ENV USER node
