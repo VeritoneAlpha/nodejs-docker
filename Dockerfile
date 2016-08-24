@@ -47,7 +47,22 @@ RUN npm install -g grunt-cli && \
 	npm install -g nodemon && \
 	npm install -g jspm
 
-# Test config
+# Link the applications manually because they only appear under /usr/local/node-$NODE_VERSION-linux-x64/bin/node
+RUN ln -s "/usr/local/node-$NODE_VERSION-linux-x64/bin/grunt" "/bin/grunt"
+RUN ln -s "/usr/local/node-$NODE_VERSION-linux-x64/bin/bower" "/bin/bower"
+RUN ln -s "/usr/local/node-$NODE_VERSION-linux-x64/bin/nodemon" "/bin/nodemon"
+RUN ln -s "/usr/local/node-$NODE_VERSION-linux-x64/bin/jspm" "/bin/jspm"
+
+
+# ---- Test that applications are linked properly ----
+# ruby apps
+RUN compass --version
+
+# node apps
+RUN npm --version; bower --version; grunt --version; jspm --version;
+
+
+# ---- Test config ----
 RUN npm install -g node-gyp
 
 
