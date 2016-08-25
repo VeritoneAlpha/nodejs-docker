@@ -42,13 +42,25 @@ RUN rm -Rf /tmp/*
 RUN gem update && \
 	gem install compass
 
+# set npm prefix to /usr/local
+# This fixes global installs
+# (symlinked) binaries get placed in /usr/local/bin
+# node_modules folder in /usr/local/lib/node_modules
+RUN npm config set prefix /usr/local
+
 RUN npm install -g grunt-cli && \
 	npm install -g bower && \
 	npm install -g nodemon && \
-	npm install -g jspm
+	npm install -g jspm && \
+	npm install -g node-gyp
 
-# Test config
-RUN npm install -g node-gyp
+
+# ---- Test that applications are linked properly ----
+# ruby apps
+RUN compass --version
+
+# node apps
+RUN npm --version; bower --version; grunt --version; jspm --version; node-gyp --version;
 
 
 # ---- Add the user node ----
